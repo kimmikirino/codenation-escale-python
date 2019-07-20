@@ -111,10 +111,10 @@ class Conta:
     self.nome = args['nome']
     self.saldo = 0
   
-  def saque(self, valor):
+  def sacar(self, valor):
     self.saldo -= valor
 
-  def deposito(self, valor):
+  def depositar(self, valor):
     self.saldo += valor
 
   def getSaldo(self):
@@ -123,7 +123,33 @@ class Conta:
 conta_bancaria = Conta(banco='itau', agencia=10, conta=1002, nome='jaqueline')
 print(conta_bancaria.banco)
 print(conta_bancaria.saldo)
-conta_bancaria.deposito(100)
+conta_bancaria.depositar(100)
 print(conta_bancaria.getSaldo())
-conta_bancaria.saque(5)
+conta_bancaria.sacar(5)
 print(conta_bancaria.saldo)
+
+class ContaPF(Conta):
+  def __init__(self, **kwargs):
+    super().__init__(**kwargs)
+    self.cpf = kwargs['cpf']
+
+class ContaPJ(Conta):
+  def __init__(self, **kwargs):
+    super().__init__(**kwargs)
+    self.cnpj = kwargs['cnpj']
+
+  def sacar(self, valor):
+    super().sacar(valor)
+    # para debugar
+    # import pdb; pdb.set_trace()
+    self.saldo -= 1
+
+
+contaPF = ContaPF(banco='itau', agencia=10, conta=1002, nome='jaqueline', cpf=555444444)
+print(contaPF.cpf)
+print(contaPF.saldo)
+contapessoaJuridica = ContaPJ(banco='itau', agencia=10, conta=1002, nome='jaqueline', cnpj=555444444)
+contapessoaJuridica.depositar(1000)
+print(contapessoaJuridica.saldo)
+contapessoaJuridica.sacar(10)
+print(contapessoaJuridica.saldo)
