@@ -1,0 +1,8 @@
+C:\Users\bfats\codenation\codenation.exe test -c python-0
+C:\Users\bfats\codenation\codenation.exe submit -c python-0
+
+virtualenv venv -p C:\Users\bfats\AppData\Local\Programs\Python\Python37-32\python.exe
+
+venv\Scripts\activate.bat
+
+venv\Scripts\deactivate.bat
