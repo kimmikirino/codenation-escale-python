@@ -4,10 +4,37 @@ C:\Users\bfats\codenation\codenation.exe submit -c python-0
 virtualenv venv -p C:\Users\bfats\AppData\Local\Programs\Python\Python37-32\python.exe
 python -m venv myvenv
 
-venv\Scripts\activate.bat
+myvenv\Scripts\activate.bat
 
-venv\Scripts\deactivate.bat
+myvenv\Scripts\deactivate.bat
 
 pip install -r requirements.txt
 
 pa_autoconfigure_django.py https://github.com/kimmikirino/django-girls.git
+
+pip freeze >  requirements.txt
+
+    python manage.py runserver
+
+heroku logs --tail -a codenation-escale
+
+heroku ps:scale web=1
+
+heroku run python manage.py migrate -a codenation-escale
+
+python manage.py makemigrations
+
+Product.objects.filter(id=1) lista
+Product.objects.get(id=1) object
+Product.objects.values('nome', 'valor') - RETORNA DICIONARIO
+
+python manage.py shell
+
+product.image.__dict__ para ver os atributos
+
+>python manage.py migrate app 0002_pet
+./manage.py migrate --fake myapp 0004_previous_migration
+./manage.py migrate myapp 0005_migration_to_run
+
+heroku run python manage.py migrate --fake app 0001_initial -a codenation-escale
+heroku run python manage.py migrate app 0002_pet -a codenation-escale
